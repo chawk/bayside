@@ -7,7 +7,7 @@ function createApplication(config) {
     var staticHandler = function (request, response) {
         fs.readFile(config.root + request.url, function (err, file) {
                 if (err) {
-                    views.page500(request, response, err);
+                    this.views.page500(request, response, err);
                     return console.log('something bad happened', err);
                 }
 
@@ -70,7 +70,7 @@ function createApplication(config) {
             return url(request, response)
         }
 
-        return views.page404(request, response);
+        return this.views.page404(request, response);
     } 
 
     // views
@@ -78,7 +78,7 @@ function createApplication(config) {
         index: function (request, response) {
             fs.readFile('./index.html', function (err, html) {
                 if (err) {
-                    views.page500(request, response, err);
+                    this.views.page500(request, response, err);
                     return console.log('something bad happened', err);
                 }
 
@@ -109,7 +109,7 @@ function createApplication(config) {
     // error handler
     server.listen(port, (err) => {  
     if (err) {
-        views.page500(request, response, err);
+        this.views.page500(request, response, err);
         return console.log('something bad happened', err)
     }
 
