@@ -2,12 +2,45 @@ function createApplication(config) {
     const http = require('http'),
     fs = require('fs'),
     port = config.port ? config.port : 3000,
-    jsonBody = require("body/json");
+    jsonBody = require("body/json"),
+    self = this;
 
-    var staticHandler = function (request, response) {
-        fs.readFile(path.resolve(__dirname, request.url), 'UTF-8', function (err, file) {
+    // views
+    self.views = {
+        index: function (request, response) {
+            fs.readFile('./index.html', function (err, html) {
                 if (err) {
-                    this.views.page500(request, response, err);
+                    self.views.page500(request, response, err);
+                    return console.log('something bad happened', err);
+                }
+
+                response.writeHeader(200, {"Content-Type": "text/html"});  
+                response.write(html);
+                response.end();
+            });
+        },
+        page404: function (request, response) {
+            response.writeHeader(404, {"Content-Type": "text/html"});  
+            response.write("Page Not Found");  
+            response.end();
+        },
+        page500: function (request, response, error) {
+            response.writeHeader(500, {"Content-Type": "text/html"});  
+            response.write("Server 500: " + error);  
+            response.end();
+        }
+    }
+
+    // urls 
+    self.urls = { 
+        '/': self.views.index
+    }
+
+    self.staticHandler = function (request, response) {
+        fs.readFile((config.root + request.url), 'UTF-8', function (err, file) {
+
+                if (err) {
+                    self.views.page500(request, response, err);
                     return console.log('something bad happened', err);
                 }
 
@@ -62,46 +95,15 @@ function createApplication(config) {
     var requestHandler = (request, response) => {
         if (request.url.includes("%7Broot%7D")) {
             request.url = request.url.replace("%7Broot%7D/", "");
-            return staticHandler(request, response);
+            return self.staticHandler(request, response);
         }
 
-        var url = this.urls[request.url];
+        var url = self.urls[request.url];
         if (url) {
             return url(request, response)
         }
 
-        return this.views.page404(request, response);
-    } 
-
-    // views
-    this.views = {
-        index: function (request, response) {
-            fs.readFile('./index.html', function (err, html) {
-                if (err) {
-                    this.views.page500(request, response, err);
-                    return console.log('something bad happened', err);
-                }
-
-                response.writeHeader(200, {"Content-Type": "text/html"});  
-                response.write(html);
-                response.end();
-            });
-        },
-        page404: function (request, response) {
-            response.writeHeader(404, {"Content-Type": "text/html"});  
-            response.write("Page Not Found");  
-            response.end();
-        },
-        page500: function (request, response, error) {
-            response.writeHeader(500, {"Content-Type": "text/html"});  
-            response.write("Server 500: " + error);  
-            response.end();
-        }
-    }
-
-    // urls 
-    this.urls = { 
-        '/': this.views.index
+        return self.views.page404(request, response);
     }
 
     const server = http.createServer(requestHandler)
@@ -109,7 +111,7 @@ function createApplication(config) {
     // error handler
     server.listen(port, (err) => {  
     if (err) {
-        this.views.page500(request, response, err);
+        self.views.page500(request, response, err);
         return console.log('something bad happened', err)
     }
 
