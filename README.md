@@ -8,7 +8,7 @@ $ npm install bayside
 
 ## Features
 
-  * Very minimal high performance
+  * Very minimal, high performance Node framework
   * Built for single page app's
   * The entire project is one file for easy debugging
   * Everything is optional from templates to single page app's
