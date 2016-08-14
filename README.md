@@ -37,7 +37,7 @@ var config = {
 var app = new bayside(config);
 ```
 
-  Create a index.html file in the same directory as app.js
+Create a index.html file in the same directory as app.js
   
 ```js
 <html>
@@ -48,25 +48,25 @@ var app = new bayside(config);
         <h1>Your Bayside App is Running!</h1>
     </body>
 </html>
-'''
+```
 
-  Add a static folder for your images, css and JS files.
+Add a static folder for your images, css and JS files.
 
-'''bash
+```bash
 mkdir static
-'''
+```
 
   Add a CSS folder to your static directory
  
- '''bash
+```bash
  mkdir css
- '''
+```
  
-   Add a css file to your css directory called main.css, than add a simple CSS style to it. 
+ Add a css file to your css directory called main.css, than add a simple CSS style to it. 
    
 ```js
  h1 { color: red; }
- '''
+ ```
 
 
 ### Start the server:
