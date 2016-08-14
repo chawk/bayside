@@ -1,4 +1,4 @@
-# bayside
+# Bayside
 
 ## Installation
 
