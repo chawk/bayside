@@ -1,18 +1,5 @@
 # bayside
 
-```js
-var config = {
-    root: "/projects/root/directory",
-    port: 3000
-}
-
-var app = new bayside(config);
-```
-
-```bash
-$ node app.js
-```
-
 ## Installation
 
 ```bash
@@ -27,17 +14,35 @@ $ npm install bayside
   * Everything is optional from templates to single page app's
   * Built as a simple server side API for modern app's using React or Angular
   
-  ###Security Issues
+## Security Issues
 
-If you discover a security vulnerability in Bayside, please see [Security Policies and Procedures](Security.md).
+  If you discover a security vulnerability in Bayside, please see [Security Policies and Procedures](Security.md).
 
-  Create the app:
+## Instructions:
+
+  Create a file called app.js in your root directory.
 
 ```bash
 $ app.js
 ```
+  
+  Add your JavaScript to app.js with your custom config settings.
 
-  Start the server:
+```js
+var config = {
+    root: "/projects/root/directory",
+    port: 3000
+}
+
+var app = new bayside(config);
+```
+
+```bash
+$ node app.js
+```
+
+
+### Start the server:
 
 ```bash
 $ node app.js
