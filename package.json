@@ -2,7 +2,7 @@
   "name": "bayside",
   "version": "0.0.1",
   "description": "A simple Node.JS framework",
-  "main": "app.js",
+  "main": "bayside.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,7 +11,11 @@
     "framework",
     "easy"
   ],
-  "author": "Chris Hawkes",
+  "author": "Chris Hawkes <noobniche@gmail.com> (http://www.youtube.com/c/ChrisHawkes)",
+  "bugs": {
+    "url": "https://github.com/chawk/bayside/issues"
+  },
+  "homepage": "https://github.com/chawk/bayside",
   "license": "MIT",
   "dependencies": {
     "body": "^5.1.0"
