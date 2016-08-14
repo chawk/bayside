@@ -39,7 +39,7 @@ var app = new bayside(config);
 
   Create a index.html file in the same directory as app.js
   
-'''html
+```js
 <html>
     <head>
         <link rel="stylesheet" href="{root}/static/main.css" />
@@ -64,7 +64,7 @@ mkdir static
  
    Add a css file to your css directory called main.css, than add a simple CSS style to it. 
    
- '''css
+```js
  h1 { color: red; }
  '''
 
