@@ -3,32 +3,6 @@ function createApplication(config) {
     fs = require('fs'),
     port = config.port ? config.port : 3000,
     jsonBody = require("body/json");
-    
-    // views
-    var views = {
-        index: function (request, response) {
-            fs.readFile('./index.html', function (err, html) {
-                if (err) {
-                    views.page500(request, response, err);
-                    return console.log('something bad happened', err);
-                }
-
-                response.writeHeader(200, {"Content-Type": "text/html"});  
-                response.write(html);
-                response.end();
-            });
-        },
-        page404: function (request, response) {
-            response.writeHeader(404, {"Content-Type": "text/html"});  
-            response.write("Page Not Found");  
-            response.end();
-        },
-        page500: function (request, response, error) {
-            response.writeHeader(500, {"Content-Type": "text/html"});  
-            response.write("Server 500: " + error);  
-            response.end();
-        }
-    }
 
     var staticHandler = function (request, response) {
         fs.readFile(config.root + request.url, function (err, file) {
@@ -66,39 +40,8 @@ function createApplication(config) {
             });
     }
 
-    // urls 
-    var urls = { 
-        '/': views.index
-    }
-
-    const requestHandler = (request, response) => {
-        if (request.url.includes("%7Broot%7D")) {
-            request.url = request.url.replace("%7Broot%7D/", "");
-            return staticHandler(request, response);
-        }
-
-        var url = urls[request.url];
-        if (url) {
-            return url(request, response)
-        }
-
-        return views.page404(request, response);
-    } 
-
-    const server = http.createServer(requestHandler)
-
-    // error handler
-    server.listen(port, (err) => {  
-    if (err) {
-        views.page500(request, response, err);
-        return console.log('something bad happened', err)
-    }
-
-    console.log(`server is listening on ${port}`)
-    })
-
     // any server requests that post data should be sent here
-    parseJson = function (request, response, callback) {
+    var parseJson = function (request, response, callback) {
         jsonBody(request, response, function (err, body) {
             if (err) {
                 console.log("error with parseJson function " + err);
@@ -115,6 +58,63 @@ function createApplication(config) {
         response.write(json);
         response.end();
     }
+
+    var requestHandler = (request, response) => {
+        if (request.url.includes("%7Broot%7D")) {
+            request.url = request.url.replace("%7Broot%7D/", "");
+            return staticHandler(request, response);
+        }
+
+        var url = this.urls[request.url];
+        if (url) {
+            return url(request, response)
+        }
+
+        return views.page404(request, response);
+    } 
+
+    // views
+    this.views = {
+        index: function (request, response) {
+            fs.readFile('./index.html', function (err, html) {
+                if (err) {
+                    views.page500(request, response, err);
+                    return console.log('something bad happened', err);
+                }
+
+                response.writeHeader(200, {"Content-Type": "text/html"});  
+                response.write(html);
+                response.end();
+            });
+        },
+        page404: function (request, response) {
+            response.writeHeader(404, {"Content-Type": "text/html"});  
+            response.write("Page Not Found");  
+            response.end();
+        },
+        page500: function (request, response, error) {
+            response.writeHeader(500, {"Content-Type": "text/html"});  
+            response.write("Server 500: " + error);  
+            response.end();
+        }
+    }
+
+    // urls 
+    this.urls = { 
+        '/': this.views.index
+    }
+
+    const server = http.createServer(requestHandler)
+
+    // error handler
+    server.listen(port, (err) => {  
+    if (err) {
+        views.page500(request, response, err);
+        return console.log('something bad happened', err)
+    }
+
+    console.log(`server is listening on ${port}`)
+    })
 }
 
 exports = module.exports = createApplication;
