@@ -37,9 +37,36 @@ var config = {
 var app = new bayside(config);
 ```
 
-```bash
-$ node app.js
-```
+  Create a index.html file in the same directory as app.js
+  
+'''html
+<html>
+    <head>
+        <link rel="stylesheet" href="{root}/static/main.css" />
+    </head>
+    <body>
+        <h1>Your Bayside App is Running!</h1>
+    </body>
+</html>
+'''
+
+  Add a static folder for your images, css and JS files.
+
+'''bash
+mkdir static
+'''
+
+  Add a CSS folder to your static directory
+ 
+ '''bash
+ mkdir css
+ '''
+ 
+   Add a css file to your css directory called main.css, than add a simple CSS style to it. 
+   
+ '''css
+ h1 { color: red; }
+ '''
 
 
 ### Start the server:
