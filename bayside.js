@@ -5,7 +5,7 @@ function createApplication(config) {
     jsonBody = require("body/json");
 
     var staticHandler = function (request, response) {
-        fs.readFile(config.root + request.url, function (err, file) {
+        fs.readFile(path.resolve(__dirname, request.url), 'UTF-8', function (err, file) {
                 if (err) {
                     this.views.page500(request, response, err);
                     return console.log('something bad happened', err);
