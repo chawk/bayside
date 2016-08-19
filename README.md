@@ -20,54 +20,13 @@ $ npm install bayside
 
 ## Instructions:
 
-  Create a file called app.js in your root directory.
+  In the folder where you want your project to be located, run this command to spin up the sample Bayside app.
 
 ```bash
-$ app.js
+$ npm init (follow the prompts to create your json config file)
+$ npm install --save bayside
+$ node ./node_modules/bayside/baysideAdmin.js app
 ```
-  
-  Add your JavaScript to app.js with your custom config settings.
-
-```js
-var config = {
-    root: "/projects/root/directory",
-    port: 3000
-}
-
-var app = new bayside(config);
-```
-
-Create a index.html file in the same directory as app.js
-  
-```js
-<html>
-    <head>
-        <link rel="stylesheet" href="{root}/static/main.css" />
-    </head>
-    <body>
-        <h1>Your Bayside App is Running!</h1>
-    </body>
-</html>
-```
-
-Add a static folder for your images, css and JS files.
-
-```bash
-mkdir static
-```
-
-  Add a CSS folder to your static directory
- 
-```bash
- mkdir css
-```
- 
- Add a css file to your css directory called main.css, than add a simple CSS style to it. 
-   
-```js
- h1 { color: red; }
- ```
-
 
 ### Start the server:
 
