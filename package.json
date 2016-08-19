@@ -1,6 +1,6 @@
 {
   "name": "bayside",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple Node.JS framework",
   "main": "bayside.js",
   "scripts": {

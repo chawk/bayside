@@ -8,16 +8,7 @@ function createApplication(config) {
     // views
     self.views = {
         index: function (request, response) {
-            fs.readFile('./index.html', function (err, html) {
-                if (err) {
-                    self.views.page500(request, response, err);
-                    return console.log('something bad happened', err);
-                }
-
-                response.writeHeader(200, {"Content-Type": "text/html"});  
-                response.write(html);
-                response.end();
-            });
+            self.template(request, response, './index.html')
         },
         page404: function (request, response) {
             response.writeHeader(404, {"Content-Type": "text/html"});  
@@ -29,6 +20,19 @@ function createApplication(config) {
             response.write("Server 500: " + error);  
             response.end();
         }
+    }
+
+    self.template = function(request, response, filename) {
+        fs.readFile(filename, function (err, html) {
+                if (err) {
+                    self.views.page500(request, response, err);
+                    return console.log('something bad happened', err);
+                }
+
+                response.writeHeader(200, {"Content-Type": "text/html"});  
+                response.write(html);
+                response.end();
+            });
     }
 
     // urls 
@@ -74,7 +78,7 @@ function createApplication(config) {
     }
 
     // any server requests that post data should be sent here
-    var parseJson = function (request, response, callback) {
+    self.parseJson = function (request, response, callback) {
         jsonBody(request, response, function (err, body) {
             if (err) {
                 console.log("error with parseJson function " + err);
@@ -85,14 +89,14 @@ function createApplication(config) {
     }
 
     // standard json response
-    var returnJson = function (response, json) {
+    self.returnJson = function (response, json) {
         json = JSON.stringify(json);
         response.writeHeader(200, {"Content-Type": "application/json"}); 
         response.write(json);
         response.end();
     }
 
-    var requestHandler = (request, response) => {
+    self.requestHandler = (request, response) => {
         if (request.url.includes("%7Broot%7D")) {
             request.url = request.url.replace("%7Broot%7D/", "");
             return self.staticHandler(request, response);
@@ -106,7 +110,7 @@ function createApplication(config) {
         return self.views.page404(request, response);
     }
 
-    const server = http.createServer(requestHandler)
+    const server = http.createServer(self.requestHandler)
 
     // error handler
     server.listen(port, (err) => {  
