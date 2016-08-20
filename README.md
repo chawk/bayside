@@ -1,4 +1,4 @@
-# Bayside
+# Bayside https://travis-ci.org/chawk/bayside.svg?branch=master
 
 ## Installation
 
