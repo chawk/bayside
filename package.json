@@ -4,7 +4,7 @@
   "description": "A simple Node.JS framework",
   "main": "bayside.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test --recursive"
   },
   "keywords": [
     "node",
@@ -20,5 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "body": "^5.1.0"
+  },
+  "devDependencies": {
+    "mocha": "^3.0.2"
   }
 }
