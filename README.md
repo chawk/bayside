@@ -1,4 +1,6 @@
-# Bayside
+[![Build Status](https://travis-ci.org/chawk/bayside.svg?branch=master)](https://travis-ci.org/chawk/bayside)
+
+# BaysideJS
 
 ## Installation
 
