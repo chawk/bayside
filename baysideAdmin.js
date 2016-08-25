@@ -1,7 +1,8 @@
 var fs = require('fs'),
         self = this
         dir = './static',
-        dir2 = './static/css'
+        dir2 = './static/css',
+        dir3 = './templates'
 
 // create these directories.  
 if (!fs.existsSync(dir)){
@@ -10,6 +11,10 @@ if (!fs.existsSync(dir)){
 
 if (!fs.existsSync(dir2)){
     fs.mkdirSync(dir2);
+}
+
+if (!fs.existsSync(dir3)){
+    fs.mkdirSync(dir3);
 }
 
 createBaseProject = function () {
