@@ -3,6 +3,8 @@ function createApplication(config) {
     fs = require('fs'),
     port = config.port ? config.port : 3000,
     jsonBody = require("body/json"),
+    static = require('node-static'),
+    nunjucks = require('nunjucks'),
     self = this;
 
     // views

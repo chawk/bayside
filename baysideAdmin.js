@@ -14,36 +14,45 @@ if (!fs.existsSync(dir2)){
 
 createBaseProject = function () {
     return `
-        var bayside = require('bayside')
+var bayside = require('bayside')
 
-        // custom user variables
-        var config = {
-            root: __dirname,
-            port: 3000
-        }
+// custom user variables
+var config = {
+    root: __dirname,
+    port: 3000,
+    templates: 'templates'
+}
 
-        var app = new bayside(config);
+var app = new bayside(config);
+
+// views
+app.views.index = function (request, response) {
+    app.template(response, "index.html", { title: "Home" });
+}
+
+// urls
+app.urls['/'] = app.views.index;
     `
 }
 
 createCss = function () {
     return `
-        h1 { color: red }
+h1 { color: red }
     `
 }
 
 createIndex = function () {
     return `
-        <html>
-            <head>
-                <title>Sample Bayside App</title>
-                <meta name="viewport" content="width=device-width,initial-scale=1">
-                <link rel="stylesheet" href="{root}/static/css/main.css" />
-            </head>
-            <body>
-                <h1>Your Bayside App is Running!</h1>
-            </body>
-        </html>
+<html>
+    <head>
+        <title>Sample Bayside App</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="/static/css/main.css" />
+    </head>
+    <body>
+        <h1>Your Bayside App is Running!</h1>
+    </body>
+</html>
     `
 }
 
@@ -60,7 +69,7 @@ fs.writeFile("./static/css/main.css", createCss(), function(err) {
     }
 });
 
-fs.writeFile("./index.html", createIndex(), function(err) {
+fs.writeFile("./templates/index.html", createIndex(), function(err) {
     if(err) {
         return console.log(err);
     }
