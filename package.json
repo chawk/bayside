@@ -1,5 +1,5 @@
 {
-  "name": "baysidejs",
+  "name": "bayside",
   "version": "0.0.8",
   "description": "A simple Node.JS framework",
   "main": "bayside.js",
