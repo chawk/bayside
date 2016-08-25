@@ -7,11 +7,11 @@ function createApplication(config) {
     nunjucks = require('nunjucks'),
     self = this;
 
+    // configure nunjucks template engine
+    nunjucks.configure(config.templates, { autoescape: true });
+
     // views
     self.views = {
-        index: function (request, response) {
-            self.template(request, response, './index.html')
-        },
         page404: function (request, response) {
             response.writeHeader(404, {"Content-Type": "text/html"});  
             response.write("Page Not Found");  
@@ -24,60 +24,14 @@ function createApplication(config) {
         }
     }
 
-    self.template = function(request, response, filename) {
-        fs.readFile(filename, function (err, html) {
-                if (err) {
-                    self.views.page500(request, response, err);
-                    return console.log('something bad happened', err);
-                }
-
-                response.writeHeader(200, {"Content-Type": "text/html"});  
-                response.write(html);
-                response.end();
-            });
+    self.template = function(response, filename, data) {
+        response.writeHeader(200, {"Content-Type": "text/html"});
+        response.write(nunjucks.render(filename, data));
+        response.end();
     }
 
     // urls 
-    self.urls = { 
-        '/': self.views.index
-    }
-
-    self.staticHandler = function (request, response) {
-        fs.readFile((config.root + request.url), 'UTF-8', function (err, file) {
-
-                if (err) {
-                    self.views.page500(request, response, err);
-                    return console.log('something bad happened', err);
-                }
-
-                var fileType = request.url.split('.').pop();
-                switch (fileType) {
-                    case "css":
-                        response.writeHeader(200, {"Content-Type": "text/css"});
-                        break;
-                    case "gif":
-                        response.writeHeader(200, {"Content-Type": "image/gif"});
-                        break;
-                    case "jpg":
-                        response.writeHeader(200, {"Content-Type": "image/jpeg"});
-                        break;
-                    case "jpeg":
-                        response.writeHeader(200, {"Content-Type": "image/jpeg"});
-                        break;
-                    case "js":
-                        response.writeHeader(200, {"Content-Type": "text/javascript"});
-                        break;
-                    case "png":
-                        response.writeHeader(200, {"Content-Type": "image/png"});
-                        break;
-                    default:
-                        break;                  
-                }
-                
-                response.write(file);
-                response.end();
-            });
-    }
+    self.urls = {};
 
     // any server requests that post data should be sent here
     self.parseJson = function (request, response, callback) {
@@ -99,10 +53,6 @@ function createApplication(config) {
     }
 
     self.requestHandler = (request, response) => {
-        if (request.url.includes("%7Broot%7D")) {
-            request.url = request.url.replace("%7Broot%7D/", "");
-            return self.staticHandler(request, response);
-        }
 
         var url = self.urls[request.url];
         if (url) {
@@ -112,13 +62,25 @@ function createApplication(config) {
         return self.views.page404(request, response);
     }
 
-    const server = http.createServer(self.requestHandler)
+    //
+    // Create a node-static server instance to serve the './public' folder
+    //
+    self.staticServer = new static.Server('./');
+
+    const server = http.createServer(function onRequest(request, response) {
+        if (request.url.includes("static")) {
+            self.staticServer.serve(request, response);
+        }
+        else {
+            self.requestHandler(request, response);
+        }       
+    });
 
     // error handler
     server.listen(port, (err) => {  
     if (err) {
         self.views.page500(request, response, err);
-        return console.log('something bad happened', err)
+        return console.log('Page Not Found', err)
     }
 
     console.log(`server is listening on ${port}`)
