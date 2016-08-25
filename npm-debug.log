@@ -1,0 +1,100 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish',
+1 verbose cli   './' ]
+2 info using npm@3.3.12
+3 info using node@v5.1.0
+4 verbose publish [ './' ]
+5 silly cache add args [ './', null ]
+6 verbose cache add spec ./
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: './',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: './',
+7 silly cache add   spec: 'C:\\Projects\\Visual Studio Code\\bayside',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory C:\Users\chrsh_000\AppData\Roaming\npm-cache\baysidejs\0.0.7\package.tgz not in flight; packing
+9 info lifecycle baysidejs@0.0.7~prepublish: baysidejs@0.0.7
+10 silly lifecycle baysidejs@0.0.7~prepublish: no script for prepublish, continuing
+11 verbose tar pack [ 'C:\\Users\\chrsh_000\\AppData\\Roaming\\npm-cache\\baysidejs\\0.0.7\\package.tgz',
+11 verbose tar pack   'C:\\Projects\\Visual Studio Code\\bayside' ]
+12 verbose tarball C:\Users\chrsh_000\AppData\Roaming\npm-cache\baysidejs\0.0.7\package.tgz
+13 verbose folder C:\Projects\Visual Studio Code\bayside
+14 verbose addLocalTarball adding from inside cache C:\Users\chrsh_000\AppData\Roaming\npm-cache\baysidejs\0.0.7\package.tgz
+15 silly cache afterAdd baysidejs@0.0.7
+16 verbose afterAdd C:\Users\chrsh_000\AppData\Roaming\npm-cache\baysidejs\0.0.7\package\package.json not in flight; writing
+17 verbose afterAdd C:\Users\chrsh_000\AppData\Roaming\npm-cache\baysidejs\0.0.7\package\package.json written
+18 silly publish { name: 'baysidejs',
+18 silly publish   version: '0.0.7',
+18 silly publish   description: 'A simple Node.JS framework',
+18 silly publish   main: 'bayside.js',
+18 silly publish   scripts: { test: 'mocha ./test --recursive' },
+18 silly publish   keywords: [ 'node', 'framework', 'easy', 'minimal' ],
+18 silly publish   author:
+18 silly publish    { name: 'Chris Hawkes',
+18 silly publish      email: 'noobniche@gmail.com',
+18 silly publish      url: 'http://www.youtube.com/c/ChrisHawkes' },
+18 silly publish   bugs: { url: 'https://github.com/chawk/bayside/issues' },
+18 silly publish   homepage: 'https://github.com/chawk/bayside',
+18 silly publish   license: 'MIT',
+18 silly publish   dependencies: { body: '^5.1.0', 'node-static': '^0.7.8', nunjucks: '^2.4.2' },
+18 silly publish   devDependencies: { mocha: '^3.0.2' },
+18 silly publish   gitHead: '47b886c2ac6c8c5d8c2a18f95b8160eb97deed6f',
+18 silly publish   readme: '[![Build Status](https://travis-ci.org/chawk/bayside.svg?branch=master)](https://travis-ci.org/chawk/bayside)\r\n\r\n# BaysideJS\r\n\r\n## Installation\r\n\r\n```bash\r\n$ npm install bayside\r\n```\r\n\r\n## Features\r\n\r\n  * Very minimal, high performance Node framework\r\n  * Built for single page app\'s\r\n  * The entire project is one file for easy debugging\r\n  * Everything is optional from templates to single page app\'s\r\n  * Built as a simple server side API for modern app\'s using React or Angular\r\n  \r\n## Security Issues\r\n\r\n  If you discover a security vulnerability in Bayside, please see [Security Policies and Procedures](Security.md).\r\n\r\n## Instructions:\r\n\r\n  In the folder where you want your project to be located, run this command to spin up the sample Bayside app.\r\n\r\n```bash\r\n$ npm init (follow the prompts to create your json config file)\r\n$ npm install --save bayside\r\n$ node ./node_modules/bayside/baysideAdmin.js app\r\n```\r\n\r\n### Start the server:\r\n\r\n```bash\r\n$ node app.js\r\n```\r\n\r\n## Philosophy\r\n\r\n  The entire philosophy behind Bayside is to do the absolute minimum for the developer.  \r\n  The main idea is to prevent as much black box magic as possible so the developer has \r\n  absolute control. \r\n\r\n  Bayside is not a full stack framework.   If you want it to be a single page \r\n  application using Angular, React or Knockout, well that\'s up to you.  If \r\n  you wish it to be a standard content website that\'s up to you as well.   \r\n  Do whatever you want with Bayside.\r\n  \r\n## Examples\r\n\r\n  examples will be provided soon.\r\n  \r\n## Tests\r\n\r\n  tests will be provided soon.\r\n  \r\n## People\r\n\r\nThe original author of Bayside is [Chris Hawkes](https://github.com/chawk)\r\n\r\n## License\r\n\r\n  [MIT](LICENSE)\r\n\r\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   _id: 'baysidejs@0.0.7',
+18 silly publish   _shasum: 'fa528e393f3c7becd1129132148aa650ead0225b',
+18 silly publish   _from: '.' }
+19 verbose getPublishConfig undefined
+20 silly mapToRegistry name baysidejs
+21 silly mapToRegistry using default registry
+22 silly mapToRegistry registry https://registry.npmjs.org/
+23 silly mapToRegistry uri https://registry.npmjs.org/baysidejs
+24 verbose publish registryBase https://registry.npmjs.org/
+25 silly publish uploading C:\Users\chrsh_000\AppData\Roaming\npm-cache\baysidejs\0.0.7\package.tgz
+26 verbose request uri https://registry.npmjs.org/baysidejs
+27 verbose request sending authorization for write operation
+28 info attempt registry request try #1 at 9:50:01 PM
+29 verbose request using bearer token for auth
+30 verbose request id bca1a857130896ec
+31 http request PUT https://registry.npmjs.org/baysidejs
+32 http 403 https://registry.npmjs.org/baysidejs
+33 verbose headers { 'content-type': 'application/json',
+33 verbose headers   'cache-control': 'max-age=300',
+33 verbose headers   'content-length': '95',
+33 verbose headers   'accept-ranges': 'bytes',
+33 verbose headers   date: 'Thu, 25 Aug 2016 01:50:32 GMT',
+33 verbose headers   via: '1.1 varnish',
+33 verbose headers   connection: 'keep-alive',
+33 verbose headers   'x-served-by': 'cache-iad2130-IAD',
+33 verbose headers   'x-cache': 'MISS',
+33 verbose headers   'x-cache-hits': '0',
+33 verbose headers   'x-timer': 'S1472089831.957118,VS0,VE519',
+33 verbose headers   vary: 'Accept-Encoding' }
+34 verbose request invalidating C:\Users\chrsh_000\AppData\Roaming\npm-cache\registry.npmjs.org\baysidejs on PUT
+35 error publish Failed PUT 403
+36 verbose stack Error: "You cannot publish over the previously published version 0.0.7." : baysidejs
+36 verbose stack     at makeError (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:264:12)
+36 verbose stack     at CachingRegistryClient.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:252:14)
+36 verbose stack     at Request._callback (C:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\request.js:172:14)
+36 verbose stack     at Request.self.callback (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:198:22)
+36 verbose stack     at emitTwo (events.js:87:13)
+36 verbose stack     at Request.emit (events.js:172:7)
+36 verbose stack     at Request.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1082:10)
+36 verbose stack     at emitOne (events.js:82:20)
+36 verbose stack     at Request.emit (events.js:169:7)
+36 verbose stack     at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\npm\node_modules\request\request.js:1009:12)
+37 verbose statusCode 403
+38 verbose pkgid baysidejs
+39 verbose cwd C:\Projects\Visual Studio Code\bayside
+40 error Windows_NT 10.0.10586
+41 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish" "./"
+42 error node v5.1.0
+43 error npm  v3.3.12
+44 error code E403
+45 error "You cannot publish over the previously published version 0.0.7." : baysidejs
+46 error If you need help, you may report this error at:
+46 error     <https://github.com/npm/npm/issues>
+47 verbose exit [ 1, true ]
