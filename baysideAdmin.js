@@ -61,9 +61,8 @@ let createIndex =  () => {
     `
 };
 
-
 fs.writeFile("./" + process.argv[2] + ".js", createBaseProject(), (err) => {
-    if(err) {
+    if(err){
         return console.log(err);
     }
 });
@@ -78,6 +77,5 @@ fs.writeFile("./templates/index.html", createIndex(), (err) => {
     if(err) {
         return console.log(err);
     }
-
     console.log("Your Bayside App Was Created!");
 });

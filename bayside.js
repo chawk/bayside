@@ -12,7 +12,7 @@ let createApplication = (config) => {
 
     // views
     self.views = {
-        page404: (request, response) =>{
+        page404: (request, response) => {
             response.writeHeader(404, {"Content-Type": "text/html"});  
             response.write("Page Not Found");  
             response.end();
@@ -39,7 +39,6 @@ let createApplication = (config) => {
             if (err) {
                 console.log("error with parseJson function " + err);
             }
-            
             callback(body);
         });
     };
@@ -53,8 +52,7 @@ let createApplication = (config) => {
     };
 
     self.requestHandler = (request, response) => {
-
-        var url = self.urls[request.url];
+        let url = self.urls[request.url];
         if (url) {
             return url(request, response);
         }
@@ -78,11 +76,11 @@ let createApplication = (config) => {
 
     // error handler
     server.listen(port, (err) => {  
-    if (err) {
-        self.views.page500(request, response, err);
-        return console.log('Page Not Found', err);
-    }
-    console.log(`server is listening on ${port}`);
+        if (err) {
+            self.views.page500(request, response, err);
+            return console.log('Page Not Found', err);
+        }
+        console.log(`server is listening on ${port}`);
     });
 };
 
