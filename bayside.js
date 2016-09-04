@@ -1,11 +1,11 @@
 function createApplication(config) {
     const http = require('http'),
-    fs = require('fs'),
-    port = config.port ? config.port : 3000,
-    jsonBody = require("body/json"),
-    static = require('node-static'),
-    nunjucks = require('nunjucks'),
-    self = this;
+        fs = require('fs'),
+        port = config.port || 3000,
+        jsonBody = require("body/json"),
+        static = require('node-static'),
+        nunjucks = require('nunjucks'),
+        self = this;
 
     // configure nunjucks template engine
     nunjucks.configure(config.templates, { autoescape: true });
@@ -37,7 +37,7 @@ function createApplication(config) {
     self.parseJson = function (request, response, callback) {
         jsonBody(request, response, function (err, body) {
             if (err) {
-                console.log("error with parseJson function " + err);
+                console.log("Error with parseJson function " + err);
             }
             
             callback(body);
@@ -54,11 +54,32 @@ function createApplication(config) {
 
     self.requestHandler = (request, response) => {
 
-        var url = self.urls[request.url];
-        if (url) {
-            return url(request, response)
+        const url = self.urls[request.url];
+
+        // If the url exists
+        if (url && (!url.method || request.method.toLowerCase() == url.method.toLowerCase())) {
+            
+            // If url.controller is a string then look for the controller in self.views
+            switch(typeof(url.controller)) {
+
+                case "function":
+                    return url.controller(request, response);
+                
+                case "string":
+                    const controller= self.views[url.controller];
+
+                    if(controller)
+                        return controller(request, response);
+                    else
+                        console.error("Error: Controller not specified");
+                    break;
+                default:
+                    console.error(`Error: Controller for the url ${request.url} is of the wrong type`);
+            }
+
         }
 
+        // Page not found error
         return self.views.page404(request, response);
     }
 
@@ -70,20 +91,19 @@ function createApplication(config) {
     const server = http.createServer(function onRequest(request, response) {
         if (request.url.includes("static")) {
             self.staticServer.serve(request, response);
-        }
-        else {
+        } else {
             self.requestHandler(request, response);
         }       
     });
 
     // error handler
     server.listen(port, (err) => {  
-    if (err) {
-        self.views.page500(request, response, err);
-        return console.log('Page Not Found', err)
-    }
+        if (err) {
+            self.views.page500(request, response, err);
+            return console.log('Page Not Found', err)
+        }
 
-    console.log(`server is listening on ${port}`)
+        console.log(`Server is listening on ${port}`);
     })
 }
 

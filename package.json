@@ -24,6 +24,8 @@
     "nunjucks": "^2.4.2"
   },
   "devDependencies": {
-    "mocha": "^3.0.2"
+    "chai": "^3.5.0",
+    "mocha": "^3.0.2",
+    "request": "^2.74.0"
   }
 }

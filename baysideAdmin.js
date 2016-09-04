@@ -19,16 +19,16 @@ if (!fs.existsSync(dir3)){
 
 createBaseProject = function () {
     return `
-var bayside = require('bayside')
+const Bayside = require('./bayside/bayside');
 
 // custom user variables
-var config = {
+const config = {
     root: __dirname,
     port: 3000,
     templates: 'templates'
 }
 
-var app = new bayside(config);
+const app = new Bayside(config);
 
 // views
 app.views.index = function (request, response) {
@@ -36,7 +36,19 @@ app.views.index = function (request, response) {
 }
 
 // urls
-app.urls['/'] = app.views.index;
+app.urls['/'] = {
+    method: "get",
+    controller: 'index'
+};
+
+app.urls['/api'] = {
+    method: "get",
+    controller(request, response) {
+        app.returnJson(response, {
+            hello: "World"
+        });
+    }
+};
     `
 }
 
@@ -50,7 +62,7 @@ createIndex = function () {
     return `
 <html>
     <head>
-        <title>Sample Bayside App</title>
+        <title>{{ title }}</title>
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link rel="stylesheet" href="/static/css/main.css" />
     </head>
