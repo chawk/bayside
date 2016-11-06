@@ -25,9 +25,9 @@ $ npm install bayside
   In the folder where you want your project to be located, run this command to spin up the sample Bayside app.
 
 ```bash
-$ npm init (follow the prompts to create your json config file)
+$ npm init
 $ npm install --save bayside
-$ node ./node_modules/bayside/baysideAdmin.js app
+$ npm run startproject app
 ```
 
 ### Start the server:
