@@ -27,7 +27,7 @@ $ npm install bayside
 ```bash
 $ npm init
 $ npm install --save bayside
-$ npm run startproject app
+$ node ./node_modules/bayside/baysideAdmin.js app
 ```
 
 ### Start the server:
