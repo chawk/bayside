@@ -19,7 +19,7 @@ if (!fs.existsSync(dir3)){
 
 createBaseProject = function () {
     return `
-const Bayside = require('./bayside/bayside');
+const Bayside = require('bayside');
 
 // custom user variables
 const config = {
