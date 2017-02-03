@@ -1,8 +1,10 @@
+#! /usr/bin/env node
+
 var fs = require('fs'),
         self = this
         dir = './static',
         dir2 = './static/css',
-        dir3 = './templates'
+        dir3 = './templates';
 
 // create these directories.  
 if (!fs.existsSync(dir)){

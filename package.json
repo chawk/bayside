@@ -13,6 +13,9 @@
     "easy",
     "minimal"
   ],
+  "bin": {
+    "baysideAdmin": "cli.js"
+  },
   "author": "Chris Hawkes <noobniche@gmail.com> (http://www.youtube.com/c/ChrisHawkes)",
   "bugs": {
     "url": "https://github.com/chawk/bayside/issues"
