@@ -27,7 +27,17 @@ $ npm install bayside
 ```bash
 $ npm init
 $ npm install --save bayside
-$ node ./node_modules/bayside/baysideAdmin.js app
+```
+  Add bayside to your package.json scripts
+
+```bash
+$ "bayside": "bayside"
+```
+
+  Now bayside can be found in your local node_modules folder.  Create a project named app.
+
+```bash
+$ npm run bayside createProject app
 ```
 
 ### Start the server:

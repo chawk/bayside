@@ -1,6 +1,6 @@
 {
   "name": "bayside",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A simple Node.JS framework",
   "main": "bayside.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "minimal"
   ],
   "bin": {
-    "baysideAdmin": "cli.js"
+    "bayside": "cli.js"
   },
   "author": "Chris Hawkes <noobniche@gmail.com> (http://www.youtube.com/c/ChrisHawkes)",
   "bugs": {
