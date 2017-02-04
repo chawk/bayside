@@ -22,36 +22,36 @@ if (process.argv[2] === "createProject") {
 
     createBaseProject = function () {
         return `
-            const Bayside = require('bayside');
+const Bayside = require('bayside');
 
-            // custom user variables
-            const config = {
-                root: __dirname,
-                port: 3000,
-                templates: 'templates'
-            }
+// custom user variables
+const config = {
+    root: __dirname,
+    port: 3000,
+    templates: 'templates'
+}
 
-            const app = new Bayside(config);
+const app = new Bayside(config);
 
-            // views
-            app.views.index = function (request, response) {
-                app.template(response, "index.html", { title: "Home" });
-            }
+// views
+app.views.index = function (request, response) {
+    app.template(response, "index.html", { title: "Home" });
+}
 
-            // urls
-            app.urls['/'] = {
-                method: "get",
-                controller: 'index'
-            };
+// urls
+app.urls['/'] = {
+    method: "get",
+    controller: 'index'
+};
 
-            app.urls['/api'] = {
-                method: "get",
-                controller(request, response) {
-                    app.returnJson(response, {
-                        hello: "World"
-                    });
-                }
-            };
+app.urls['/api'] = {
+    method: "get",
+    controller(request, response) {
+        app.returnJson(response, {
+            hello: "World"
+        });
+    }
+};
         `
     }
 
@@ -63,16 +63,16 @@ if (process.argv[2] === "createProject") {
 
     createIndex = function () {
         return `
-            <html>
-                <head>
-                    <title>{{ title }}</title>
-                    <meta name="viewport" content="width=device-width,initial-scale=1">
-                    <link rel="stylesheet" href="/static/css/main.css" />
-                </head>
-                <body>
-                    <h1>Your Bayside App is Running!</h1>
-                </body>
-            </html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="stylesheet" href="/static/css/main.css" />
+    </head>
+    <body>
+        <h1>Your Bayside App is Running!</h1>
+    </body>
+</html>
         `
     }
 
