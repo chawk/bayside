@@ -23,18 +23,6 @@ $ node server.js
 ## Security Issues
 
   If you discover a security vulnerability in Bayside, please see [Security Policies and Procedures](Security.md).
-  
-## Examples
-
-  examples will be provided soon.
-  
-## Tests
-
-  tests will be provided soon.
-  
-## People
-
-The original author of Bayside is [Chris Hawkes](https://github.com/chawk)
 
 ## License
 
