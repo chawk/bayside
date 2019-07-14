@@ -1,35 +1,27 @@
 {
   "name": "bayside",
-  "version": "0.0.15",
-  "description": "A simple Node.JS framework",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.org/chawk/bayside.svg?branch=master)](https://travis-ci.org/chawk/bayside)",
   "main": "bayside.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "startproject": "node baysideAdmin.js",
-    "test": "mocha ./test --recursive"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
-  "keywords": [
-    "node",
-    "framework",
-    "easy",
-    "minimal"
-  ],
-  "bin": {
-    "bayside": "cli.js"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chawk/bayside.git"
   },
-  "author": "Chris Hawkes <noobniche@gmail.com> (http://www.youtube.com/c/ChrisHawkes)",
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/chawk/bayside/issues"
   },
-  "homepage": "https://github.com/chawk/bayside",
-  "license": "MIT",
+  "homepage": "https://github.com/chawk/bayside#readme",
   "dependencies": {
-    "body": "^5.1.0",
-    "node-static": "^0.7.8",
-    "nunjucks": "^2.4.2"
-  },
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.0.2",
-    "request": "^2.74.0"
+    "fastify": "^2.6.0",
+    "fastify-static": "^2.5.0"
   }
 }
