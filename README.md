@@ -1,4 +1,4 @@
-# BaysideJS
+# Create An Awesome Website With Fastify
 
 This is where we left with 
 [Create An Awesome Website With Fastify - Getting Started](https://www.youtube.com/watch?v=_X-pjh4Vd10)
