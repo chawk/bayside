@@ -1,10 +1,8 @@
-[![Build Status](https://travis-ci.org/chawk/bayside.svg?branch=master)](https://travis-ci.org/chawk/bayside)
-
 # BaysideJS
 
-This is where we left off for the Create An Awesome Website With Fastify - Getting Started
+This is where we left off for the 
 
-https://www.youtube.com/watch?v=_X-pjh4Vd10
+[Create An Awesome Website With Fastify - Getting Started](https://www.youtube.com/watch?v=_X-pjh4Vd10)
 
 ## Installation
 
@@ -31,4 +29,11 @@ $ node server.js
 ## License
 
   [MIT](LICENSE)
+
+## Author
+
+Chris Hawkes
+
+[YouTube](https://www.youtube.com/channel/UCfV36TX5AejfAGIbtwTc7Zw)
+[Twitter](https://twitter.com/RealChrisHawkes)
 
