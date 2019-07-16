@@ -1,7 +1,6 @@
 # BaysideJS
 
-This is where we left off for the 
-
+This is where we left with 
 [Create An Awesome Website With Fastify - Getting Started](https://www.youtube.com/watch?v=_X-pjh4Vd10)
 
 ## Installation
@@ -35,5 +34,6 @@ $ node server.js
 Chris Hawkes
 
 [YouTube](https://www.youtube.com/channel/UCfV36TX5AejfAGIbtwTc7Zw)
+
 [Twitter](https://twitter.com/RealChrisHawkes)
 
