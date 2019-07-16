@@ -2,6 +2,10 @@
 
 # BaysideJS
 
+This is where we left off for the Create An Awesome Website With Fastify - Getting Started
+
+https://www.youtube.com/watch?v=_X-pjh4Vd10
+
 ## Installation
 
 A Command Line Interface (CLI) will be created eventually, for now just clone the project. 
