@@ -2,6 +2,8 @@
 
 # BaysideJS
 
+[Create An Awesome Website With Fastify - Getting Started](https://www.youtube.com/watch?v=_X-pjh4Vd10)
+
 ## Installation
 
 A Command Line Interface (CLI) will be created eventually, for now just clone the project. 
@@ -27,4 +29,12 @@ $ node server.js
 ## License
 
   [MIT](LICENSE)
+
+## Author
+
+Chris Hawkes
+
+[YouTube](https://www.youtube.com/channel/UCfV36TX5AejfAGIbtwTc7Zw)
+
+[Twitter](https://twitter.com/RealChrisHawkes)
 
