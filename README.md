@@ -1,7 +1,7 @@
 # Create An Awesome Website With Fastify
 
 This is where we left with 
-[Create An Awesome Website With Fastify - Getting Started](https://www.youtube.com/watch?v=_X-pjh4Vd10)
+[Create An Awesome Website With Fastify - Creating Our Own Theme From Scratch](https://www.youtube.com/watch?v=_X-pjh4Vd10)
 
 ## Installation
 

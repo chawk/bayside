@@ -1,0 +1,45 @@
+body {
+    font-family: "Time New Roman";
+    color: rgba(0,0,0,.8);
+}
+
+.container {
+    width: 1280px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.main-banner {
+    h1.title {
+        font-size: 4rem;
+    }
+}
+
+nav {
+    .container {
+        flex-wrap: nowrap;
+        
+        .logo {
+            margin-top: 1rem;
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: nowrap;
+
+            li {
+                width: 150px;
+                text-align: center;
+                list-style-type: none;
+                font-size: 1.5rem;
+
+                a {
+                    color: rgba(0,0,0,.8);
+                    text-decoration: none;
+                }:hover {
+                    color: red;
+                }
+            }
+        }
+    }
+}

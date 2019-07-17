@@ -9,8 +9,14 @@ fastify.register(require('fastify-static'), {
     prefix: '/public/', // optional: default '/'
 })
 
+fastify.register(require('point-of-view'), {
+  engine: {
+    handlebars: require('handlebars')
+  }
+})
+
 fastify.get('/', function (req, reply) {
-    reply.sendFile('index.html')
+    reply.view('./templates/index.html', { data: 'Custom Title for this Joint' })
 })
 
 fastify.get('/about', async (request, reply) => {
