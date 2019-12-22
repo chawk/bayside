@@ -1,0 +1,30 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <h1 class="blog-title">Bayside Admin</h1>
+            <form method="post" action="/test">
+                <label for="filename">File Name:</label>
+                <input class="form-control" type="text" name="filename" />
+                <label for="title">Title:</label>
+                <input class="form-control" type="text" name="title" />
+                <label for="image">Image:</label>
+                <textarea class="form-control" id="image" name="image"></textarea>
+                <textarea class="form-control" id="mytextarea" name="content">Hello, World!</textarea>
+                <button id="submitForm">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+<script src="/public/js/jquery.js"></script>
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: '#mytextarea'
+    });
+
+    $('#submitForm').on('click', function(e) {
+        e.preventDefault();
+        tinyMCE.triggerSave(true, true);
+        $('form').submit();
+    })
+</script>

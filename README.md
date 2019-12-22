@@ -1,4 +1,4 @@
-# Create An Awesome Website With Fastify
+# BaysideJS - Self-Contained Blogging Framework
 
 [Create An Awesome Website With Fastify - Getting Started](https://www.youtube.com/watch?v=_X-pjh4Vd10)
 
@@ -9,6 +9,7 @@ A Command Line Interface (CLI) will be created eventually, for now just clone th
 CD into the project and run
 
 ```bash
+$ npm install
 $ node server.js
 ```
 
@@ -17,8 +18,7 @@ $ node server.js
   * Very minimal, high performance Node framework using Fastify
   * Built for modern applications using React, Angular or Vue
   * Static file support
-  * Blogging administrative portal (planned)
-  * Support for SQL and NoSQL (planned)
+  * Blogging administrative portal
   
 ## Security Issues
 
