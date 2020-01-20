@@ -1,30 +1,67 @@
 <section>
     <div class="container">
         <div class="row">
-            <h1 class="blog-title">Bayside Admin</h1>
-            <form method="post" action="/test">
-                <label for="filename">File Name:</label>
-                <input class="form-control" type="text" name="filename" />
-                <label for="title">Title:</label>
-                <input class="form-control" type="text" name="title" />
-                <label for="image">Image:</label>
-                <textarea class="form-control" id="image" name="image"></textarea>
-                <textarea class="form-control" id="mytextarea" name="content">Hello, World!</textarea>
-                <button id="submitForm">Submit</button>
-            </form>
+            <div class="col-md-12">
+                <h1 class="blog-title">Blog Writing Administrator</h1>
+            </div>
+            <div class="col-md-12 blog-administrator">
+                <form method="post" action="/create_blog">
+                    <label for="filename" class="add-margin-bottom add-margin-top">File Name:</label>
+                    <input class="form-control" type="text" name="filename" />
+                    <label for="title" class="add-margin-bottom add-margin-top">Title:</label>
+                    <input class="form-control" type="text" name="title" />
+                    <label for="tags" class="add-margin-bottom add-margin-top">Tags:</label>
+                    <input class="form-control" type="text" name="tags" />
+                    <label for="author" class="add-margin-bottom add-margin-top">Author:</label>
+                    <input class="form-control" type="text" name="author" />
+                    <label for="image" class="add-margin-bottom add-margin-top">Image (paste in image url):</label>
+                    <textarea class="form-control" id="image" name="image"></textarea>
+                    <button id="processImage" class="btn btn-primary add-margin-bottom">Upload Image</button>
+                    <textarea class="form-control" id="mytextarea" name="content">Hello, World!</textarea>
+                    <button class="btn btn-primary add-margin-top" id="submitForm">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>
 <script src="/public/js/jquery.js"></script>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="/public/js/tinymce/tinymce.min.js"></script>
 <script>
     tinymce.init({
-        selector: '#mytextarea'
+        selector: '#mytextarea',
+        plugins: "image, media, emoticons"
     });
 
     $('#submitForm').on('click', function(e) {
         e.preventDefault();
         tinyMCE.triggerSave(true, true);
         $('form').submit();
-    })
+    });
+
+    $('#processImage').on('click', function (e) {
+        e.preventDefault();
+        if ($('#image').val() === "") return;
+
+        var data = {
+            image: $('#image').val()
+        }
+
+        $.ajax({
+            type: "POST",
+            url: '/process_image',
+            data: JSON.stringify(data),
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (response) {
+                if (response.data) {
+                    $('#image').val(response.data);
+                } else {
+                    console.log("an error occurred while uploading the image");
+                }
+            },
+            error: function (obj, textStatus, errorMessage) {
+                console.log(errorMessage);
+            }
+        });
+    });
 </script>

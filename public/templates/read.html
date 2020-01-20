@@ -1,12 +1,32 @@
 <section id="content">
   <div class="container">
     <div class="row">
-        <h1 class="blog-header">{{ title }}</h1>
-        <image src="data:image/png;base64, {{ image }}" class="blog-image" alt="{{ title }}" height="300" />   
-    </div>
-    <div class="row">
-      <div class="content">
-          {{ content }}
+      <h1 class="blog-header">{{ title }}</h1>
+      <div class="blog">
+          <div class="col-md-9">
+              <div class="author">
+                <img src="/public/img/authors/{{ author_image }}" alt="{{ author_name }}" />
+                <p>
+                  By <a href="{{ author_url }}">{{ author_name }}</a>
+                </p>
+                <p>
+                  {{ date }}
+                </p>
+              </div>
+              <img src="/public/img/blogs/{{ image }}" class="blog-image" alt="{{ title }}" />
+              <div class="row">
+                <div class="content">
+                    {{ content }}
+                </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+            <h4>More from CodeHawke</h4>
+            <a href="#">
+              <img src="/public/img/blogs/{{ image }}" width="75" />
+              <h5>Lindsey Vonn and her fiance are engaged again.  This time she blah blah blah</h5>
+            </a>
+          </div>
       </div>
     </div>
   </div>

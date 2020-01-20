@@ -1,0 +1,1 @@
+{"ast":null,"code":"import React from \"react\";\nvar __jsx = React.createElement;\n\n__jsx(\"h1\", null, \"hello mother fucker\");","map":{"version":3,"sources":["c:/projects/blogging_platform/pages/test.js"],"names":[],"mappings":";;;AAAA","sourcesContent":["<h1>hello mother fucker</h1>"]},"metadata":{},"sourceType":"script"}

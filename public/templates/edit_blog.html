@@ -1,0 +1,66 @@
+<section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="blog-title">Blog Writing Administrator</h1>
+                </div>
+                <div class="col-md-12 blog-administrator">
+                    <form method="post" action="/create_blog">
+                        <label for="filename" class="add-margin-bottom add-margin-top">File Name:</label>
+                        <input class="form-control" type="text" name="filename" value="{{ file_name }}" />
+                        <label for="title" class="add-margin-bottom add-margin-top">Title:</label>
+                        <input class="form-control" type="text" name="title" value="{{ title }}" />
+                        <label for="tags" class="add-margin-bottom add-margin-top">Tags:</label>
+                        <input class="form-control" type="text" name="tags" value="{{ tags }}" />
+                        <label for="author" class="add-margin-bottom add-margin-top">Author:</label>
+                        <input class="form-control" type="text" name="author" value="{{ author_name }}" />
+                        <label for="image" class="add-margin-bottom add-margin-top">Image (paste in image url):</label>
+                        <textarea class="form-control" id="image" name="image">{{ image }}</textarea>
+                        <button id="processImage" class="btn btn-primary add-margin-bottom">Upload Image</button>
+                        <textarea class="form-control" id="mytextarea" name="content">{{ content }}</textarea>
+                        <button class="btn btn-primary add-margin-top" id="submitForm">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="/public/js/jquery.js"></script>
+    <script src="/public/js/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+            plugins: "image, media, emoticons"
+        });
+    
+        $('#submitForm').on('click', function(e) {
+            e.preventDefault();
+            tinyMCE.triggerSave(true, true);
+            $('form').submit();
+        });
+    
+        $('#processImage').click(function (e) {
+            if ($('#image').val() === "") return;
+    
+            var data = {
+                image: $('#image').val()
+            }
+    
+            $.ajax({
+                type: "POST",
+                url: '/process_image',
+                data: JSON.stringify(data),
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (response) {
+                    if (response.data) {
+                        $('#image').val(response.data);
+                    } else {
+                        console.log("an error occurred while uploading the image");
+                    }
+                },
+                error: function (obj, textStatus, errorMessage) {
+                    console.log(errorMessage);
+                }
+            });
+        });
+    </script>

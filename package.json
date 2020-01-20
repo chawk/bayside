@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "sass": "node-sass --output-style compressed -o public/css public/scss --watch"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,15 @@
     "buffer-replace": "^1.0.0",
     "fastify": "^2.6.0",
     "fastify-formbody": "^3.1.0",
-    "fastify-static": "^2.5.0"
+    "fastify-nextjs": "^4.1.1",
+    "fastify-static": "^2.5.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.1.6",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "node-sass": "^4.13.0"
   }
 }

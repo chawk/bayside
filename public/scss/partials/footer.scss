@@ -1,0 +1,12 @@
+footer {
+    background: rgb(12, 12, 12);
+    color: #ccc;
+    margin-top: 20px;
+    a {
+        color: #ccc;
+        &:hover {
+            text-decoration: underline;
+            color: #FFF;
+        }
+    }
+}
