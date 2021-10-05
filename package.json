@@ -26,7 +26,7 @@
     "fastify": "^2.6.0",
     "fastify-formbody": "^3.1.0",
     "fastify-nextjs": "^4.1.1",
-    "fastify-static": "^2.5.0",
+    "fastify-static": "^4.2.4",
     "isomorphic-unfetch": "^3.0.0",
     "next": "^9.1.6",
     "react": "^16.12.0",
